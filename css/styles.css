@@ -225,6 +225,7 @@ section.your-active-class .landing__container::after {
 	}
 }
 
+/* the style of the scroll to top button */
 .to-top {
     background: white;
     position: fixed;
@@ -242,10 +243,10 @@ section.your-active-class .landing__container::after {
     opacity:0;
     pointer-events: none;
     transition: all .4s;
-  }
+}
   
-  .to-top.active {
+.to-top.active {
     bottom:32px;
     pointer-events: auto;
     opacity:1;
-  }
+}
