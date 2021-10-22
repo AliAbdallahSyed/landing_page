@@ -9,7 +9,8 @@ function ListCreator() {
         Link = section.getAttribute("id"); //  the the id of the section
         Item = document.createElement("li"); // create a new list in the (ul)
         Item.setAttribute("data-nav", `${Link}`);
-        Item.innerHTML = `<a class='menu__link' href='#${Link}'>${Name}</a>` // create the link of the section
+        Item.setAttribute("class", "nav-item active")
+        Item.innerHTML = `<a class='menu__link nav-link' href='#${Link}'>${Name}</a>` // create the link of the section
         ListItem.appendChild(Item); // add the child (li) to (ul)
     }
 }
@@ -21,13 +22,13 @@ window.onscroll = function() {
   // geting and check the area of the section
 	if(hover.getBoundingClientRect().top >= -400 && hover.getBoundingClientRect().top <= 150){
 
-    hover.classList.add("your-active-class"); // adding a color on hover
-    activeLink.classList.add("active-link"); // adding a color on click and scrolling
+    hover.classList.add("bg-dark"); // adding a color on hover
+    activeLink.classList.add("bg-info"); // adding a color on click and scrolling
 
     }
     else{
-         hover.classList.remove("your-active-class"); // remove the color after hover
-         activeLink.classList.remove("active-link"); // remove a color on click and scrolling
+         hover.classList.remove("bg-dark"); // remove the color after hover
+         activeLink.classList.remove("bg-info"); // remove a color on click and scrolling
     }
 	});
 }
