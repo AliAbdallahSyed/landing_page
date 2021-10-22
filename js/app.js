@@ -8,9 +8,8 @@ function ListCreator() {
         Name = section.getAttribute("data-nav"); // take the name of the section
         Link = section.getAttribute("id"); //  the the id of the section
         Item = document.createElement("li"); // create a new list in the (ul)
-        Item.setAttribute("data-nav", `${Link}`); // adding (data-nav) attribute to (li)
-        Item.setAttribute("class", "nav-item active") // adding bootsrap class to (li)
-        Item.innerHTML = `<a class='menu__link nav-link' href='#${Link}'>${Name}</a>` // create the link of the section
+        Item.setAttribute("class", "nav-item active"); // adding bootsrap class to (li)
+        Item.innerHTML = `<a class='menu__link nav-link' data-nav='${Link}' href='#${Link}'>${Name}</a>`; // create the link of the section
         ListItem.appendChild(Item); // add the child (li) to (ul)
     }
 }
@@ -44,9 +43,10 @@ window.addEventListener("scroll", () => {
 })
 
 
-// adding smooth scroll
+// smooth scroll
+
 ListItem.addEventListener("click", (event) => {
-  event.preventDefault();
+  event.preventDefault(); // preven the default browser event
   if (event.target.dataset.nav) {
     document
       .getElementById(`${event.target.dataset.nav}`)
@@ -56,5 +56,4 @@ ListItem.addEventListener("click", (event) => {
     }, 200);
   }
 });
-
 ListCreator();
