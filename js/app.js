@@ -8,8 +8,8 @@ function ListCreator() {
         Name = section.getAttribute("data-nav"); // take the name of the section
         Link = section.getAttribute("id"); //  the the id of the section
         Item = document.createElement("li"); // create a new list in the (ul)
-        Item.setAttribute("data-nav", `${Link}`);
-        Item.setAttribute("class", "nav-item active")
+        Item.setAttribute("data-nav", `${Link}`); // adding (data-nav) attribute to (li)
+        Item.setAttribute("class", "nav-item active") // adding bootsrap class to (li)
         Item.innerHTML = `<a class='menu__link nav-link' href='#${Link}'>${Name}</a>` // create the link of the section
         ListItem.appendChild(Item); // add the child (li) to (ul)
     }
@@ -18,7 +18,7 @@ function ListCreator() {
 // this function is adding a style states to the navbar items
 window.onscroll = function() {
 	document.querySelectorAll("section").forEach(function(hover) {
-    let activeLink = ListItem.querySelector(`[data-nav=${hover.id}]`);
+    var activeLink = ListItem.querySelector(`[data-nav=${hover.id}]`);
   // geting and check the area of the section
 	if(hover.getBoundingClientRect().top >= -400 && hover.getBoundingClientRect().top <= 150){
 
@@ -42,5 +42,19 @@ window.addEventListener("scroll", () => {
       toTop.classList.remove("active");
     }
 })
+
+
+// adding smooth scroll
+ListItem.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.dataset.nav) {
+    document
+      .getElementById(`${event.target.dataset.nav}`)
+      .scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      location.hash = `${event.target.dataset.nav}`;
+    }, 200);
+  }
+});
 
 ListCreator();
